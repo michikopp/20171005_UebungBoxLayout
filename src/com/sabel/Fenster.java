@@ -7,11 +7,9 @@ import java.awt.event.ActionListener;
 
 public class Fenster extends JFrame{
 
-    private JPanel jpWest, jpSouth, jpCenter, jpNorth;
+    private JPanel jpWest, jpSouth, jpCenter;
     private JButton jbtRed, jbtGreen, jbtBlue;
     private JRadioButton jRadioButtonRed, jRadioButtonGreen, jRadioButtonBlue;
-    private String[] items = {"Red", "Green", "Blue"};
-    private JComboBox jComboBox;
 
     public Fenster() {
         super("Übung Farbenspiel");
@@ -64,47 +62,24 @@ public class Fenster extends JFrame{
                 red();
             }
         });
-
-
-        //Eventhandling ComboBox
-        jComboBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                switch ((String)jComboBox.getSelectedItem()){
-                    case "Red":
-                        red();
-                        break;
-                    case "Green":
-                        green();
-                        break;
-                    case "Blue":
-                        blue();
-                        break;
-                }
-            }
-        });
     }
 
     private void red() {
         jpCenter.setBackground(Color.RED);
         jRadioButtonRed.setSelected(true);
-        jComboBox.setSelectedItem("Red");
     }
 
     private void green() {
         jpCenter.setBackground(Color.GREEN);
         jRadioButtonGreen.setSelected(true);
-        jComboBox.setSelectedItem("Green");
     }
 
     private void blue() {
         jpCenter.setBackground(Color.BLUE);
         jRadioButtonBlue.setSelected(true);
-        jComboBox.setSelectedItem("Blue");
     }
 
     private void initialComponents() {
-        //RadioButtons
         jpWest = new JPanel();
         jpWest.setLayout(new BoxLayout(jpWest, BoxLayout.Y_AXIS));
         jRadioButtonRed = new JRadioButton("Red");
@@ -119,7 +94,6 @@ public class Fenster extends JFrame{
         bg.add(jRadioButtonGreen);
         bg.add(jRadioButtonRed);
 
-        //JButton
         jpSouth = new JPanel();
         jbtBlue = new JButton("Blue");
         jbtGreen = new JButton("Green");
@@ -131,14 +105,7 @@ public class Fenster extends JFrame{
         jpCenter = new JPanel();
         jpCenter.setBackground(Color.RED);
 
-        //ComboBox
-        jpNorth = new JPanel();
-        jComboBox = new JComboBox(items);
-        jComboBox.setSelectedIndex(0);
-        jpNorth.add(jComboBox);
 
-        //Windows Position
-        this.add(jpNorth, BorderLayout.NORTH);
         this.add(jpWest, BorderLayout.WEST);
         this.add(jpCenter, BorderLayout.CENTER);
         this.add(jpSouth, BorderLayout.SOUTH);
