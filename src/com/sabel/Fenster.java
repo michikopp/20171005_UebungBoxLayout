@@ -2,6 +2,8 @@ package com.sabel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Fenster extends JFrame{
 
@@ -13,14 +15,74 @@ public class Fenster extends JFrame{
         super("Übung Farbenspiel");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.initialComponents();
-        this.setSize(300, 300);
+        this.initEvents();
+        //this.setSize(300, 300);
+        this.pack();
         this.setVisible(true);
+    }
+
+    private void initEvents() {
+        this.jbtRed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                red();
+            }
+        });
+        this.jbtGreen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                green();
+            }
+        });
+        this.jbtBlue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                blue();
+            }
+        });
+
+        //RadioButtons EventHandling
+        this.jRadioButtonBlue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                blue();
+            }
+        });
+
+        this.jRadioButtonGreen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                green();
+            }
+        });
+
+        this.jRadioButtonRed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                red();
+            }
+        });
+    }
+
+    private void red() {
+        jpCenter.setBackground(Color.RED);
+        jRadioButtonRed.setSelected(true);
+    }
+
+    private void green() {
+        jpCenter.setBackground(Color.GREEN);
+        jRadioButtonGreen.setSelected(true);
+    }
+
+    private void blue() {
+        jpCenter.setBackground(Color.BLUE);
+        jRadioButtonBlue.setSelected(true);
     }
 
     private void initialComponents() {
         jpWest = new JPanel();
         jpWest.setLayout(new BoxLayout(jpWest, BoxLayout.Y_AXIS));
-        jRadioButtonRed = new JRadioButton("Reed");
+        jRadioButtonRed = new JRadioButton("Red");
         jRadioButtonRed.setSelected(true);
         jRadioButtonGreen = new JRadioButton("Green");
         jRadioButtonBlue = new JRadioButton("Blue");
