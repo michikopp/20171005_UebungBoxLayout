@@ -22,62 +22,12 @@ public class Fenster extends JFrame{
     }
 
     private void initEvents() {
-        this.jbtRed.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                red();
-            }
-        });
-        this.jbtGreen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                green();
-            }
-        });
-        this.jbtBlue.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                blue();
-            }
-        });
+        MyActionListener malr = new MyActionListener(jpCenter, jRadioButtonRed);
+        jRadioButtonRed.addActionListener(malr);
+        jbtRed.addActionListener(malr);
 
-        //RadioButtons EventHandling
-        this.jRadioButtonBlue.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                blue();
-            }
-        });
-
-        this.jRadioButtonGreen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                green();
-            }
-        });
-
-        this.jRadioButtonRed.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                red();
-            }
-        });
     }
 
-    private void red() {
-        jpCenter.setBackground(Color.RED);
-        jRadioButtonRed.setSelected(true);
-    }
-
-    private void green() {
-        jpCenter.setBackground(Color.GREEN);
-        jRadioButtonGreen.setSelected(true);
-    }
-
-    private void blue() {
-        jpCenter.setBackground(Color.BLUE);
-        jRadioButtonBlue.setSelected(true);
-    }
 
     private void initialComponents() {
         jpWest = new JPanel();
@@ -103,7 +53,7 @@ public class Fenster extends JFrame{
         jpSouth.add(jbtBlue);
 
         jpCenter = new JPanel();
-        jpCenter.setBackground(Color.RED);
+        //jpCenter.setBackground(Color.RED);
 
 
         this.add(jpWest, BorderLayout.WEST);
