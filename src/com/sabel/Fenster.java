@@ -64,21 +64,43 @@ public class Fenster extends JFrame{
                 red();
             }
         });
+
+
+        //Eventhandling ComboBox
+        jComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch ((String)jComboBox.getSelectedItem()){
+                    case "Red":
+                        red();
+                        break;
+                    case "Green":
+                        green();
+                        break;
+                    case "Blue":
+                        blue();
+                        break;
+                }
+            }
+        });
     }
 
     private void red() {
         jpCenter.setBackground(Color.RED);
         jRadioButtonRed.setSelected(true);
+        jComboBox.setSelectedItem("Red");
     }
 
     private void green() {
         jpCenter.setBackground(Color.GREEN);
         jRadioButtonGreen.setSelected(true);
+        jComboBox.setSelectedItem("Green");
     }
 
     private void blue() {
         jpCenter.setBackground(Color.BLUE);
         jRadioButtonBlue.setSelected(true);
+        jComboBox.setSelectedItem("Blue");
     }
 
     private void initialComponents() {
