@@ -7,9 +7,11 @@ import java.awt.event.ActionListener;
 
 public class Fenster extends JFrame{
 
-    private JPanel jpWest, jpSouth, jpCenter;
+    private JPanel jpWest, jpSouth, jpCenter, jpNorth;
     private JButton jbtRed, jbtGreen, jbtBlue;
     private JRadioButton jRadioButtonRed, jRadioButtonGreen, jRadioButtonBlue;
+    private String[] items = {"Red", "Green", "Blue"};
+    private JComboBox jComboBox;
 
     public Fenster() {
         super("Übung Farbenspiel");
@@ -80,6 +82,7 @@ public class Fenster extends JFrame{
     }
 
     private void initialComponents() {
+        //RadioButtons
         jpWest = new JPanel();
         jpWest.setLayout(new BoxLayout(jpWest, BoxLayout.Y_AXIS));
         jRadioButtonRed = new JRadioButton("Red");
@@ -94,6 +97,7 @@ public class Fenster extends JFrame{
         bg.add(jRadioButtonGreen);
         bg.add(jRadioButtonRed);
 
+        //JButton
         jpSouth = new JPanel();
         jbtBlue = new JButton("Blue");
         jbtGreen = new JButton("Green");
@@ -105,7 +109,14 @@ public class Fenster extends JFrame{
         jpCenter = new JPanel();
         jpCenter.setBackground(Color.RED);
 
+        //ComboBox
+        jpNorth = new JPanel();
+        jComboBox = new JComboBox(items);
+        jComboBox.setSelectedIndex(0);
+        jpNorth.add(jComboBox);
 
+        //Windows Position
+        this.add(jpNorth, BorderLayout.NORTH);
         this.add(jpWest, BorderLayout.WEST);
         this.add(jpCenter, BorderLayout.CENTER);
         this.add(jpSouth, BorderLayout.SOUTH);
